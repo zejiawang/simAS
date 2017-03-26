@@ -1,7 +1,7 @@
 # simAS
 simAS Group work for Protocol Processing course
 
-26.3, Timo
+26.3, Timo  
 All right, some bones and some meat on bones.
 initDb.py is independent python script which initializes database with information from
 fill.sql - which has two tables, Routers and Ports. !!! Please observe structure and suggest additions
