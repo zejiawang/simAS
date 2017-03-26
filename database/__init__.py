@@ -10,9 +10,17 @@ def initSQL(fileName):
     for command in sqlCommands:
         dbCursor.execute(command)
     dbConnection.commit()
+def listPorts(where=''):
+    out=[]
+    for row in dbCursor.execute("SELECT * FROM PORTS "+where):
+        out.append(row)
+    return out
     
-def listRouters():
-    for row in dbCursor.execute("SELECT * FROM ROUTERS"):
-        print (row)
+    
+def listRouters(where=''):
+    out=[]
+    for row in dbCursor.execute("SELECT * FROM ROUTERS "+where):
+        out.append(row)
+    return out
     
     
