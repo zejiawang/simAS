@@ -6,13 +6,15 @@ Created on Mar 26, 2017
 import database
 
 if __name__ == '__main__':
-    dbObject=database
-    routers=dbObject.listRouters()
+    DbObject=database
+    routers=DbObject.ListRouters()
+    ports=DbObject.ListPorts("")
     for router in routers:
-        name=router[1]
-        id=router[0]
-        print ("We have router by name '{}', with id={}".format(name,id))
-        print ("Ports belonging to router are:")
-        ports=dbObject.listPorts('WHERE Router_Id={}'.format(id))
+        print ("We've got router with id {}, by the name {}".format(router.Id,router.Name))
+        print ("Belonging ports:")
+        ports=DbObject.ListPorts("")
         for port in ports:
-            print ("Port {} with assigned ip={}".format(port[0],port[2]))
+            if port.RouterId==router.Id:
+                print("Port id={}, with IP={}".format(port.Id,port.Ip))
+       
+       

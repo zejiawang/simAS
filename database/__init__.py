@@ -1,26 +1,42 @@
 import sqlite3
-dbConnection = sqlite3.connect('main.db')
-dbCursor=dbConnection.cursor()
+DbConnection = sqlite3.connect('main.db')
+DbCursor=DbConnection.cursor()
 
-def initSQL(fileName):
-    databaseFile=open(fileName,'r')
-    sqlFile=databaseFile.read()
-    databaseFile.close()
-    sqlCommands = sqlFile.split(';')
-    for command in sqlCommands:
-        dbCursor.execute(command)
-    dbConnection.commit()
-def listPorts(where=''):
+class Router(object):
+    Id=0
+    Name='X'
+class Port(object):
+    Id=0
+    RouterId=0
+    Ip='x.x.x.x'
+
+def InitSQL(FileName):
+    DatabaseFile=open(FileName,'r')
+    SqlFile=DatabaseFile.read()
+    DatabaseFile.close()
+    SqlCommands = SqlFile.split(';')
+    for command in SqlCommands:
+        DbCursor.execute(command)
+    DbConnection.commit()
+def ListPorts(Where=''):
     out=[]
-    for row in dbCursor.execute("SELECT * FROM PORTS "+where):
-        out.append(row)
+    cursor=DbCursor.execute("SELECT * FROM PORTS "+Where)
+    for row in DbCursor.execute("SELECT * FROM PORTS "+Where).fetchall():
+        Obj=Router()
+        Obj.Id=row[0]
+        Obj.RouterId=row[1]
+        Obj.Ip=row[2]
+        out.append(Obj)
     return out
     
     
-def listRouters(where=''):
+def ListRouters(Where=''):
     out=[]
-    for row in dbCursor.execute("SELECT * FROM ROUTERS "+where):
-        out.append(row)
+    for row in DbCursor.execute("SELECT * FROM ROUTERS "+Where).fetchall():
+        Obj=Router()
+        Obj.Id=row[0]
+        Obj.Name=row[1]
+        out.append(Obj)
     return out
     
     

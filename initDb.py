@@ -7,6 +7,6 @@ import database
 
 if __name__ == '__main__':
     dbObject=database
-    dbObject.initSQL('fill.sql') #reinitialize database
-    dbObject.listRouters()
+    dbObject.InitSQL('fill.sql') #reinitialize database
+
     
