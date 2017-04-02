@@ -1,8 +1,8 @@
 # simAS
 simAS Group work for Protocol Processing course
 
-2.4, Timo
-Removed database from package to module. It is not that big project.
+2.4, Timo  
+Removed database from package to module. It is not that big project.  
 
 26.3, Timo  
 All right, some bones and some meat on bones.  
