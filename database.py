@@ -10,7 +10,7 @@ DbCursor=DbConnection.cursor()
 class Router(object):
     Id=0
     Name='X'
-class Port(object):
+class Port(object): # maybe we can put two classes into one class
     Id=0
     RouterId=0
     Ip='x.x.x.x'
